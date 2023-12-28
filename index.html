@@ -18,11 +18,11 @@
         <a onclick="toggleDarkMode()">data-theme</a>
       </main>
     </div>
+    <script>
+      function toggleDarkMode() {
+        localStorage.dark = !localStorage.dark
+        document.documentElement.setAttribute('data-theme', localStorage.dark ? 'dark' : 'light')
+      }
+    </script>
   </body>
-  <script type="module">
-    function toggleDarkMode() {
-      localStorage.dark = !localStorage.dark
-      document.documentElement.setAttribute('data-theme', localStorage.dark ? 'dark' : 'light')
-    }
-  </script>
 </html>
