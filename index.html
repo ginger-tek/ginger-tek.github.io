@@ -1,38 +1,90 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <h1>Hello!</h1>
-        <label><input id="switch" type="checkbox" role="switch" onchange="toggle(this.checked ? 'dark' : 'light')">Theme</label>
-      </main>
-    </div>
-    <script>
-    	const switchEL = document.querySelector('#switch')
-    
-      function toggle(theme) {
-        localStorage.theme = theme
-        document.documentElement.setAttribute('data-theme', theme)
-      }
 
-      function load() {
-        let theme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        document.documentElement.setAttribute('data-theme', theme)
-        theme == 'dark' ? switchEL.setAttribute('checked', true) : switchEL.removeAttribute('checked')
-      }
-      
-      load()
-    </script>
-  </body>
+<head>
+  <title>GingerTek</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico">
+  <style>
+    article,
+    article header>* {
+      margin-bottom: 0;
+    }
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+        <ul>
+          <li><label role="link"><input id="switch" type="checkbox" role="switch"
+                onchange="toggle(this.checked ? 'dark' : 'light')">Dark</label></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="center">
+      <h1 style="font-size:3em">Welcome!</h1>
+      <h2>Hi, I make cool stuff for the web. You can check out my projects below, or find out more about me over on <a
+          href="https://tilde.club/~gingertek">tilde.club</a></h2>
+        </div>
+      <hr>
+      <div class="grid">
+        <article>
+          <header>
+            <h4>Jerpy</h4>
+          </header>
+          <p>Smallest flat-file PHP CMS around!</p>
+          <a href="https://github.com/ginger-tek/jerpy" role="button">GitHub</a>
+        </article>
+        <article>
+          <header>
+            <h4>Routy</h4>
+          </header>
+          <p>Simple, robust REST API and MPA router</p>
+          <a href="https://github.com/ginger-tek/routy" role="button">GitHub</a>
+        </article>
+      </div>
+      <div class="grid">
+        <article>
+          <header>
+            <h4>JWTiny</h4>
+          </header>
+          <p>Small PHP lib for generating and verifying JSON Web Tokens (JWT)</p>
+          <a href="https://github.com/ginger-tek/jwtiny" role="button">GitHub</a>
+        </article>
+        <article>
+          <header>
+            <h4>Pico-Vue</h4>
+          </header>
+          <p>Small PHP lib for generating and verifying JSON Web Tokens (JWT)</p>
+          <a href="https://github.com/ginger-tek/jwtiny" role="button">GitHub</a>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script>
+    const switchEL = document.querySelector('#switch')
+
+    function toggle(theme) {
+      localStorage.theme = theme
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    function load() {
+      let theme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      document.documentElement.setAttribute('data-theme', theme)
+      theme == 'dark' ? switchEL.setAttribute('checked', true) : switchEL.removeAttribute('checked')
+    }
+
+    load()
+  </script>
+</body>
+
 </html>
