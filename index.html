@@ -2,18 +2,27 @@
 <html>
   <head>
     <title>Home</title>
-    <link rel="stylesheet" href="//unpkg.com/@picocss/pico">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico">
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <h1>Hello!</h1>
-    </main>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>Hello!</h1>
+        <a onclick="toggleDarkMode()">data-theme</a>
+      </main>
+    </div>
   </body>
+  <script type="module">
+    function toggleDarkMode() {
+      localStorage.dark = !localStorage.dark
+      document.documentElement.setAttribute('data-theme', localStorage.dark ? 'dark' : 'light')
+    }
+  </script>
 </html>
