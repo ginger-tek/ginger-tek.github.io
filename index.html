@@ -15,14 +15,24 @@
       </header>
       <main>
         <h1>Hello!</h1>
-        <a onclick="toggleDarkMode()">data-theme</a>
+        <label><input id="switch" type="checkbox" role="switch" onchange="toggle(this.checked ? 'dark' : 'light')">Theme</label>
       </main>
     </div>
     <script>
-      function toggleDarkMode() {
-        localStorage.dark = !localStorage.dark
-        document.documentElement.setAttribute('data-theme', localStorage.dark ? 'dark' : 'light')
+    	const switchEL = document.querySelector('#switch')
+    
+      function toggle(theme) {
+        localStorage.theme = theme
+        document.documentElement.setAttribute('data-theme', theme)
       }
+
+      function load() {
+        let theme = localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.setAttribute('data-theme', theme)
+        theme == 'dark' ? switchEL.setAttribute('checked', true) : switchEL.removeAttribute('checked')
+      }
+      
+      load()
     </script>
   </body>
 </html>
